@@ -43,4 +43,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://github.com/klu2300033153/23SDCS13A-2300033153-EX1.git
+          cd frontend
           npm run deploy
