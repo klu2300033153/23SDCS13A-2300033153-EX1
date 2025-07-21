@@ -36,4 +36,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm install -g gh-pages
-          npx gh-pages -d build -u "klu2300033153 <2300033153@kluniversity.in>"
+          npx gh-pages -d dist -u "klu2300033153 <2300033153@kluniversity.in>"
