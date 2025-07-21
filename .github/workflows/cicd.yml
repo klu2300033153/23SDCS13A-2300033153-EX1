@@ -36,4 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm install -g gh-pages
-          npx gh-pages -d dist -u "klu2300033153 <2300033153@kluniversity.in>"
+          git config --global user.email "2300033153@kluniversity.in"
+          git config --global user.name "klu2300033153"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/klu2300033153/23SDCS13A-2300033153-EX1.git
+          npx gh-pages -d dist
