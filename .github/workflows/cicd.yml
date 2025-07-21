@@ -1,0 +1,42 @@
+name: CI/CD React App
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: write  
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test --if-present
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm install -g gh-pages
+          git config --global user.email "2300033153@kluniversity.in"
+          git config --global user.name "klu2300033153"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/klu2300033153/23SDCS13A-2300033153-EX1.git
+          npx gh-pages -d dist
